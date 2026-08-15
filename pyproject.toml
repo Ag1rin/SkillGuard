@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skillguard"
+version = "0.2.0"
+description = "Static security scanner for AI agent Skills — catches prompt injection, exfiltration, and unsafe code before a Skill runs."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+authors = [{ name = "SkillGuard Contributors" }]
+keywords = ["ai", "security", "llm", "agent", "skills", "prompt-injection", "static-analysis"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+
+[project.scripts]
+skillguard = "skillguard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Ag1rin/SkillGuard"
+Repository = "https://github.com/Ag1rin/SkillGuard"
+Issues = "https://github.com/Ag1rin/SkillGuard/issues"
+
+[tool.setuptools]
+packages = ["skillguard"]

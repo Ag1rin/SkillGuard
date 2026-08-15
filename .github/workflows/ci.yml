@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run test suite
+        run: python -m unittest discover -s tests -v
+      - name: Self-scan example skills (must find the planted issues)
+        run: python -m skillguard.cli scan examples --no-color
+      - name: Demonstrate CI gating (should fail on the malicious example)
+        run: |
+          python -m skillguard.cli scan examples/malicious-skill --fail-on-blocked --no-color; \
+          test $? -eq 1
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run test suite
+        run: python -m unittest discover -s tests -v
+      - name: Terminal output works on Windows code pages
+        run: python -m skillguard.cli scan examples/safe-skill
