@@ -31,3 +31,6 @@ Thumbs.db
 # Local reports
 report.json
 report.md
+
+# Generated assets (regenerate with: python scripts/generate_demo_gif.py)
+# docs/demo.gif is committed for README — do not ignore

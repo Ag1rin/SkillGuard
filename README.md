@@ -1,5 +1,9 @@
 # SkillGuard
 
+<p align="center">
+  <img src="docs/demo.gif" alt="SkillGuard scanning AI agent skills and flagging prompt injection, exfiltration, and unsafe code">
+</p>
+
 **Static security scanner for AI agent Skills.** Catches prompt injection, hidden instructions, exfiltration, and unsafe code in `SKILL.md` files and their companion scripts — before a Skill ever gets to run.
 
 [![CI](https://github.com/Ag1rin/SkillGuard/actions/workflows/ci.yml/badge.svg)](https://github.com/Ag1rin/SkillGuard/actions)
