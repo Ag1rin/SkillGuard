@@ -22,8 +22,10 @@ jobs:
         run: python -m skillguard.cli scan examples --no-color
       - name: Demonstrate CI gating (should fail on the malicious example)
         run: |
-          python -m skillguard.cli scan examples/malicious-skill --fail-on-blocked --no-color; \
-          test $? -eq 1
+          if python -m skillguard.cli scan examples/malicious-skill --fail-on-blocked --no-color; then
+            echo "Expected --fail-on-blocked to exit non-zero for a BLOCKED skill"
+            exit 1
+          fi
 
   windows:
     runs-on: windows-latest
